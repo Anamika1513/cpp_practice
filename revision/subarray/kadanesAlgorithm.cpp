@@ -1,19 +1,21 @@
 #include <iostream>
+#include<vector>
+#include <climits>
 using namespace std;
 
 int main(){
-    int n = 5;
-    int arr[n] = {1,2,3,4,5};
+    int nums[] ={-2,1,-3,4,-1,2,1,-5,4};
+    int n = sizeof(nums) / sizeof(nums[0]);
 
-    for(int st=0 ; st<n ; st++){
-        for(int end = st; end<n ; end++){
-            for(int i=st ; i<=end ; i++){
-                cout<<arr[i];
-            }
-            cout<<" ";
-        }
-        cout<<endl;
+    int curSum = 0 , maxSum = INT_MIN;
+
+    for(int i = 0 ; i<n ;i++){
+        curSum += nums[i];
+        maxSum = max(curSum , maxSum);
+        if(curSum < 0) curSum = 0;
     }
+
+    cout<<"Maximum sum of subArray : "<<maxSum ; 
 
     return 0;
 }
